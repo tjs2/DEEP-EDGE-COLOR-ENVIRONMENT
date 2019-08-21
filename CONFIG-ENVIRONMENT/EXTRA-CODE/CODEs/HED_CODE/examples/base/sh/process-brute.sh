@@ -21,8 +21,8 @@ echo ' . Fold:' $4
 echo ' . Iterations:' $5
 echo ' . Snapshot begin:' $6
 echo ' . Snapshot step:' $7
-echo ' . piotrToolboxFullPath:' $8
-echo ' . pdollarFullPath:' $9
+echo ' . Eval code edge:' $8
+echo ' . Eval code toolbox:' $9
 echo
 
 COLOR_PARAM=$1
@@ -32,8 +32,8 @@ FOLD_PARAM=$4
 ITERATIONS_PARAM=$5
 SNAPSHOT_BEGIN_PARAM=$6
 SNAPSHOT_STEP_PARAM=$7
-piotrToolboxFullPath=/home/cabm/Mestrado/CODE-EVAL/Eval-Code/toolboxes/piotr_toolbox/toolbox
-pdollarFullPath=/home/cabm/Mestrado/CODE-EVAL/Eval-Code/toolboxes/edges-master
+EVAL_CODE_TOOLBOX_PARAM=$8
+EVAL_CODE_EDGES_PARAM=$9
 
 ##################################################################
 # Configuration
@@ -67,8 +67,8 @@ do
 
     CMD="matlab -nodisplay -r \""
     CMD+="cd('"$MATLAB_FOLDER"'); "
-    CMD+="addpath(genpath('"$piotrToolboxFullPath"')); "
-    CMD+="addpath(genpath('"$pdollarFullPath"')); "
+    CMD+="addpath(genpath('"$EVAL_CODE_TOOLBOX_PARAM"')); "
+    CMD+="addpath(genpath('"$EVAL_CODE_EDGES_PARAM"')); "
     CMD+="process_brute_data_hed({'"$FOLDER_TO_EVAL"'}, '"$BRUTE_RESULT_DIR"', '"$FINAL_RESULT_DIR"'); "
     CMD+="exit\""
 

@@ -21,8 +21,8 @@ DATABASES_FULL_PATH_CONF="../../../data"
 DEPLOY_PROTOTXT_CONF="../conf/deploy.prototxt"
 
 # Full path to pdollar toolboxes
-piotrToolboxFullPath=/home/cabm/Mestrado/CODE-EVAL/Eval-Code/toolboxes/piotr_toolbox/toolbox
-pdollarFullPath=/home/cabm/Mestrado/CODE-EVAL/Eval-Code/toolboxes/edges-master
+EVAL_CODE_TOOLBOX_CONF="../../../../../EVAL-CODE/toolbox/"
+EVAL_CODE_EDGES_CONF="../../../../../EVAL-CODE/edges/"
 
 ##################################################################
 # Calculated configuration
@@ -111,7 +111,7 @@ DATE=`date '+%Y-%m-%d %H:%M:%S'`
 BEGIN_TIME=$SECONDS
 echo -e "\n"[$DATE]" Begin process brute boudary detection maps.\n"
 
-./process-brute.sh $COLOR_CONF $DATASET_CONF $METHODOLOGY_CONF $FOLD_CONF $ITERATIONS_CONF $SNAPSHOT_ITERATION_BEGIN_CONF $SNAPSHOT_ITERATION_STEP_CONF $piotrToolboxFullPath $pdollarFullPath
+./process-brute.sh $COLOR_CONF $DATASET_CONF $METHODOLOGY_CONF $FOLD_CONF $ITERATIONS_CONF $SNAPSHOT_ITERATION_BEGIN_CONF $SNAPSHOT_ITERATION_STEP_CONF $EVAL_CODE_TOOLBOX_CONF $EVAL_CODE_EDGES_CONF
 
 DATE=`date '+%Y-%m-%d %H:%M:%S'`
 END_TIME=$SECONDS
