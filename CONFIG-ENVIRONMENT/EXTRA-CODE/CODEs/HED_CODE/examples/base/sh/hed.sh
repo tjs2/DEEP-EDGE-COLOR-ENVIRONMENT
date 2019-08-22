@@ -24,6 +24,9 @@ DEPLOY_PROTOTXT_CONF="../conf/deploy.prototxt"
 EVAL_CODE_TOOLBOX_CONF="../../../../../EVAL-CODE/toolbox/"
 EVAL_CODE_EDGES_CONF="../../../../../EVAL-CODE/edges/"
 
+# GT Images root folder
+EVAL_GT_IMGS_ROOT_FOLDER_CONF="../../../../../EVAL-CODE/GT"
+
 ##################################################################
 # Calculated configuration
 ##################################################################
@@ -127,7 +130,7 @@ DATE=`date '+%Y-%m-%d %H:%M:%S'`
 BEGIN_TIME=$SECONDS
 echo -e "\n"[$DATE]" Begin boudary detection maps evaluation.\n"
 
-#./eval.sh
+./eval.sh $COLOR_CONF $DATASET_CONF $METHODOLOGY_CONF $FOLD_CONF $ITERATIONS_CONF $SNAPSHOT_ITERATION_BEGIN_CONF $SNAPSHOT_ITERATION_STEP_CONF $EVAL_CODE_TOOLBOX_CONF $EVAL_CODE_EDGES_CONF $EVAL_GT_IMGS_ROOT_FOLDER_CONF
 
 DATE=`date '+%Y-%m-%d %H:%M:%S'`
 END_TIME=$SECONDS
