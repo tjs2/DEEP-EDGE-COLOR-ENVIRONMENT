@@ -89,5 +89,39 @@ popd
 
 pushd $PWD
 cd $CODES_FOLDER_CONF"/"$HED_CODE_FOLDER_CONF"/examples/"
-ln -fs "../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base" "base"
+
+mkdir -p "./base/conf"
+cd "./base/conf"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/conf/deploy.prototxt" "deploy.prototxt"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/conf/solver_test.prototxt" "solver_test.prototxt"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/conf/solver_weigth_random_initialization_train.prototxt" "solver_weigth_random_initialization_train.prototxt"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/conf/train_test.prototxt" "train_test.prototxt"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/conf/train_weigth_fixed_initialization_train.prototxt" "train_weigth_fixed_initialization_train.prototxt"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/conf/train_weigth_random_initialization_train.prototxt" "train_weigth_random_initialization_train.prototxt"
+cd "../../"
+
+mkdir -p "./base/matlab"
+cd "./base/matlab"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/matlab/evaluation.m" "evaluation.m"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/matlab/process_brute_data_hed.m" "process_brute_data_hed.m"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/matlab/thinning.m" "thinning.m"
+cd "../../"
+
+mkdir -p "./base/py"
+cd "./base/py"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/py/colorspace.py" "colorspace.py"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/py/test.py" "test.py"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/py/train.py" "train.py"
+cd "../../"
+
+mkdir -p "./base/sh"
+cd "./base/sh"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/sh/eval.sh" "eval.sh"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/sh/hed.sh" "hed.sh"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/sh/process-brute.sh" "process-brute.sh"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/sh/run.sh" "run.sh"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/sh/test.sh" "test.sh"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/sh/train.sh" "train.sh"
+cd "../../"
+
 popd
