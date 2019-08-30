@@ -80,10 +80,34 @@ git clone $CEDN_CODE_GIT_URL_CONF $CODES_FOLDER_CONF"/"$CEDN_CODE_FOLDER_CONF
 
 # DATABASEs
 
-cp -rf "./EXTRA-CODE/DATABASEs/pascal_context/." $DATABASE_FOLDER_CONF"/"$PASCAL_CONTEXT_NAME_CONF"/"
-cp -rf "./EXTRA-CODE/DATABASEs/bsds500/." $DATABASE_FOLDER_CONF"/"$BSDS500_NAME_CONF"/"
+pushd $PWD
+cd $DATABASE_FOLDER_CONF"/"$PASCAL_CONTEXT_NAME_CONF"/"
 
-## EVAL-CODE
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/test-fold0.lst" "test-fold0.lst"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/test-fold1.lst" "test-fold1.lst"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/test-fold2.lst" "test-fold2.lst"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/test-fold3.lst" "test-fold3.lst"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/test-fold4.lst" "test-fold4.lst"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/test-fold5.lst" "test-fold5.lst"
+
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train_pair-fold0.lst" "train_pair-fold0.lst"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train_pair-fold1.lst" "train_pair-fold1.lst"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train_pair-fold2.lst" "train_pair-fold2.lst"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train_pair-fold3.lst" "train_pair-fold3.lst"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train_pair-fold4.lst" "train_pair-fold4.lst"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train_pair-fold5.lst" "train_pair-fold5.lst"
+
+popd
+
+pushd $PWD
+cd $DATABASE_FOLDER_CONF"/"$BSDS500_NAME_CONF"/"
+
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/bsds500/test-fold1.lst" "test-fold1.lst"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train_pair-fold1.lst" "train_pair-fold1.lst"
+
+popd
+
+# EVAL-CODE
 
 pushd $PWD
 cd $EVAL_FOLDER_CONF"/"$PDOLLAR_EDGES_FOLDER_CONF"/private/"
