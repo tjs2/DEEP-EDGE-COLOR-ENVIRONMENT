@@ -19,6 +19,8 @@ BSDS500_NAME_CONF="bsds500"
 
 EVAL_FOLDER_CONF="../"$ENVIRONMENT_FOLDER_CONF"/EVAL-CODE"
 
+GT_URL_CONF="https://www.dropbox.com/s/akuwc8fp2xqmcsa/GT.zip?dl=0"
+
 PDOLLAR_EDGES_URL_CONF="https://github.com/tjs2/edges.git"
 PDOLLAR_TOOLBOX_URL_CONF="https://github.com/tjs2/toolbox.git"
 
@@ -58,6 +60,9 @@ mkdir -p $EVAL_FOLDER_CONF
 
 git clone $PDOLLAR_EDGES_URL_CONF $EVAL_FOLDER_CONF"/"$PDOLLAR_EDGES_FOLDER_CONF
 git clone $PDOLLAR_TOOLBOX_URL_CONF $EVAL_FOLDER_CONF"/"$PDOLLAR_TOOLBOX_FOLDER_CONF
+
+wget -O $EVAL_FOLDER_CONF"/GT.zip" $GT_URL_CONF
+unzip $EVAL_FOLDER_CONF"/GT.zip" -d $EVAL_FOLDER_CONF"/"$GT"/"
 
 # CODEs
 
