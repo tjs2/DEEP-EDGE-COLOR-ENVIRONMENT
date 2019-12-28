@@ -12,7 +12,7 @@ popd () {
 # Parameters
 ##################################################################
 
-echo 'Train parameters:'
+echo 'Test parameters:'
 
 echo ' . Color:' $1
 echo ' . Dataset:' $2
