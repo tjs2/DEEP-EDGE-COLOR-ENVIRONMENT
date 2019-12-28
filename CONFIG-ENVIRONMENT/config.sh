@@ -103,7 +103,7 @@ pushd $PWD
 cd $DATABASE_FOLDER_CONF"/"$BSDS500_NAME_CONF"/"
 
 ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/bsds500/test-fold1.lst" "test-fold1.lst"
-ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train_pair-fold1.lst" "train_pair-fold1.lst"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/bsds500/train_pair-fold1.lst" "train_pair-fold1.lst"
 
 popd
 
