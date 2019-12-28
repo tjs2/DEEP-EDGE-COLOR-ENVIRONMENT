@@ -71,6 +71,8 @@ elif [ "$METHODOLOGY_CONF" = "test" ]; then
 
 fi
 
+MAIL_SUBJECT=hed-$DATASET_CONF-$COLOR_CONF-$METHODOLOGY_CONF-fold$FOLD_CONF
+
 ##################################################################
 # Execution: Train
 ##################################################################
@@ -80,14 +82,19 @@ TOTAL_BEGIN_TIME=$SECONDS
 echo '--------------------------------------------------------'
 DATE=`date '+%Y-%m-%d %H:%M:%S'`
 BEGIN_TIME=$SECONDS
-echo -e "\n"[$DATE]" Begin train process.\n"
+ECHO_CONTENT_BEGIN="\n"[$DATE]" Begin train process.\n"
+echo -e $ECHO_CONTENT_BEGIN
 
-bash ./train.sh $COLOR_CONF $DATASET_CONF $METHODOLOGY_CONF $FOLD_CONF $ITERATIONS_CONF $DATASET_FOLDER_CONF $DATASET_IMAGES_TRAIN_LIST_CONF $BASE_WEIGHTS_CONF $SOLVER_STATE_CONF || true
+CMD="bash ./train.sh $COLOR_CONF $DATASET_CONF $METHODOLOGY_CONF $FOLD_CONF $ITERATIONS_CONF $DATASET_FOLDER_CONF $DATASET_IMAGES_TRAIN_LIST_CONF $BASE_WEIGHTS_CONF $SOLVER_STATE_CONF || true"
+eval $CMD
 
 DATE=`date '+%Y-%m-%d %H:%M:%S'`
 END_TIME=$SECONDS
-echo -e "\n"[$DATE]" End train process. Elapsed: $(( END_TIME - BEGIN_TIME )) seconds.\n"
+ECHO_CONTENT_END="\n"[$DATE]" End train process. Elapsed: $(( END_TIME - BEGIN_TIME )) seconds.\n"
+echo -e $ECHO_CONTENT_END
 echo '--------------------------------------------------------'
+
+bash ./send-mail.sh $MAIL_SUBJECT " . Machine: <br>$HOSTNAME<br> . Begin: ${ECHO_CONTENT_BEGIN//"\n"/\<br\>} . End: ${ECHO_CONTENT_END//"\n"/\<br\>} . CMD: <br>${CMD//"\n"/\<br\>}<br>"
 
 ##################################################################
 # Execution: Test
@@ -96,14 +103,19 @@ echo '--------------------------------------------------------'
 echo '--------------------------------------------------------'
 DATE=`date '+%Y-%m-%d %H:%M:%S'`
 BEGIN_TIME=$SECONDS
-echo -e "\n"[$DATE]" Begin boundary map generation.\n"
+ECHO_CONTENT_BEGIN="\n"[$DATE]" Begin boundary map generation.\n"
+echo -e $ECHO_CONTENT_BEGIN
 
-bash ./test.sh $COLOR_CONF $DATASET_CONF $METHODOLOGY_CONF $FOLD_CONF $ITERATIONS_CONF $DATASET_FOLDER_CONF $DATASET_IMAGES_TEST_LIST_CONF $DEPLOY_PROTOTXT_CONF $SNAPSHOT_ITERATION_BEGIN_CONF $SNAPSHOT_ITERATION_STEP_CONF || true
+CMD="bash ./test.sh $COLOR_CONF $DATASET_CONF $METHODOLOGY_CONF $FOLD_CONF $ITERATIONS_CONF $DATASET_FOLDER_CONF $DATASET_IMAGES_TEST_LIST_CONF $DEPLOY_PROTOTXT_CONF $SNAPSHOT_ITERATION_BEGIN_CONF $SNAPSHOT_ITERATION_STEP_CONF || true"
+eval $CMD
 
 DATE=`date '+%Y-%m-%d %H:%M:%S'`
 END_TIME=$SECONDS
-echo -e "\n"[$DATE]" End boundary map generation. Elapsed: $(( END_TIME - BEGIN_TIME )) seconds.\n"
+ECHO_CONTENT_END="\n"[$DATE]" End boundary map generation. Elapsed: $(( END_TIME - BEGIN_TIME )) seconds.\n"
+echo -e $ECHO_CONTENT_END
 echo '--------------------------------------------------------'
+
+bash ./send-mail.sh $MAIL_SUBJECT " . Machine: <br>$HOSTNAME<br> . Begin: ${ECHO_CONTENT_BEGIN//"\n"/\<br\>} . End: ${ECHO_CONTENT_END//"\n"/\<br\>} . CMD: <br>${CMD//"\n"/\<br\>}<br>"
 
 ##################################################################
 # Execution: Process boundary
@@ -112,14 +124,19 @@ echo '--------------------------------------------------------'
 echo '--------------------------------------------------------'
 DATE=`date '+%Y-%m-%d %H:%M:%S'`
 BEGIN_TIME=$SECONDS
-echo -e "\n"[$DATE]" Begin process brute boudary detection maps.\n"
+ECHO_CONTENT_BEGIN="\n"[$DATE]" Begin process brute boudary detection maps.\n"
+echo -e $ECHO_CONTENT_BEGIN
 
-bash ./process-brute.sh $COLOR_CONF $DATASET_CONF $METHODOLOGY_CONF $FOLD_CONF $ITERATIONS_CONF $SNAPSHOT_ITERATION_BEGIN_CONF $SNAPSHOT_ITERATION_STEP_CONF $EVAL_CODE_TOOLBOX_CONF $EVAL_CODE_EDGES_CONF
+CMD="bash ./process-brute.sh $COLOR_CONF $DATASET_CONF $METHODOLOGY_CONF $FOLD_CONF $ITERATIONS_CONF $SNAPSHOT_ITERATION_BEGIN_CONF $SNAPSHOT_ITERATION_STEP_CONF $EVAL_CODE_TOOLBOX_CONF $EVAL_CODE_EDGES_CONF"
+eval $CMD
 
 DATE=`date '+%Y-%m-%d %H:%M:%S'`
 END_TIME=$SECONDS
-echo -e "\n"[$DATE]" End process brute boudary detection maps. Elapsed: $(( END_TIME - BEGIN_TIME )) seconds.\n"
+ECHO_CONTENT_END="\n"[$DATE]" End process brute boudary detection maps. Elapsed: $(( END_TIME - BEGIN_TIME )) seconds.\n"
+echo -e $ECHO_CONTENT_END
 echo '--------------------------------------------------------'
+
+bash ./send-mail.sh $MAIL_SUBJECT " . Machine: <br>$HOSTNAME<br> . Begin: ${ECHO_CONTENT_BEGIN//"\n"/\<br\>} . End: ${ECHO_CONTENT_END//"\n"/\<br\>} . CMD: <br>${CMD//"\n"/\<br\>}<br>"
 
 ##################################################################
 # Execution: Process brute boudary detection maps
@@ -128,14 +145,24 @@ echo '--------------------------------------------------------'
 echo '--------------------------------------------------------'
 DATE=`date '+%Y-%m-%d %H:%M:%S'`
 BEGIN_TIME=$SECONDS
-echo -e "\n"[$DATE]" Begin boudary detection maps evaluation.\n"
+ECHO_CONTENT_BEGIN="\n"[$DATE]" Begin boudary detection maps evaluation.\n"
+echo -e $ECHO_CONTENT_BEGIN
 
-bash ./eval.sh $COLOR_CONF $DATASET_CONF $METHODOLOGY_CONF $FOLD_CONF $ITERATIONS_CONF $SNAPSHOT_ITERATION_BEGIN_CONF $SNAPSHOT_ITERATION_STEP_CONF $EVAL_CODE_TOOLBOX_CONF $EVAL_CODE_EDGES_CONF $EVAL_GT_IMGS_ROOT_FOLDER_CONF
+CMD="bash ./eval.sh $COLOR_CONF $DATASET_CONF $METHODOLOGY_CONF $FOLD_CONF $ITERATIONS_CONF $SNAPSHOT_ITERATION_BEGIN_CONF $SNAPSHOT_ITERATION_STEP_CONF $EVAL_CODE_TOOLBOX_CONF $EVAL_CODE_EDGES_CONF $EVAL_GT_IMGS_ROOT_FOLDER_CONF"
+eval $CMD
 
 DATE=`date '+%Y-%m-%d %H:%M:%S'`
 END_TIME=$SECONDS
-echo -e "\n"[$DATE]" End boudary detection maps evaluation. Elapsed: $(( END_TIME - BEGIN_TIME )) seconds.\n"
+ECHO_CONTENT_END="\n"[$DATE]" End boudary detection maps evaluation. Elapsed: $(( END_TIME - BEGIN_TIME )) seconds.\n"
+echo -e $ECHO_CONTENT_END
 echo '--------------------------------------------------------'
 
+bash ./send-mail.sh $MAIL_SUBJECT " . Machine: <br>$HOSTNAME<br> . Begin: ${ECHO_CONTENT_BEGIN//"\n"/\<br\>} . End: ${ECHO_CONTENT_END//"\n"/\<br\>} . CMD: <br>${CMD//"\n"/\<br\>}<br>"
+
+# --------------------------------------------------------
+
 TOTAL_END_TIME=$SECONDS
-echo -e "\nTotal elapsed: $(( TOTAL_END_TIME - TOTAL_BEGIN_TIME )) seconds.\n"
+ECHO_CONTENT="\nTotal elapsed: $(( TOTAL_END_TIME - TOTAL_BEGIN_TIME )) seconds.\n"
+echo -e $ECHO_CONTENT
+
+bash ./send-mail.sh $MAIL_SUBJECT " . Machine: <br>$HOSTNAME<br> . Total: ${ECHO_CONTENT//"\n"/\<br\>}"

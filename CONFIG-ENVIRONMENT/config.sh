@@ -159,6 +159,13 @@ ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/
 ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/sh/run.sh" "run.sh"
 ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/sh/test.sh" "test.sh"
 ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/sh/train.sh" "train.sh"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/sh/send-mail.sh" "send-mail.sh"
+cd "../../"
+
+mkdir -p "./base/java"
+cd "./base/java"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/java/mail.properties" "mail.properties"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/java/mail.sender-0.0.1-jar-with-dependencies.jar" "mail.sender-0.0.1-jar-with-dependencies.jar"
 cd "../../"
 
 popd
