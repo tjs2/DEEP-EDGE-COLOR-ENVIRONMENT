@@ -1,3 +1,13 @@
+set -e
+
+pushd () {
+    command pushd "$@" > /dev/null
+}
+
+popd () {
+    command popd "$@" > /dev/null
+}
+
 #####################################################################################
 # CONFIG
 #####################################################################################
@@ -80,6 +90,8 @@ git clone $CEDN_CODE_GIT_URL_CONF $CODES_FOLDER_CONF"/"$CEDN_CODE_FOLDER_CONF
 
 # DATABASEs
 
+# DATABASE - PASCAL CONTEXT - HED
+
 pushd $PWD
 cd $DATABASE_FOLDER_CONF"/"$PASCAL_CONTEXT_NAME_CONF"/"
 
@@ -97,7 +109,25 @@ ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train_pa
 ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train_pair-fold4.lst" "train_pair-fold4.lst"
 ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train_pair-fold5.lst" "train_pair-fold5.lst"
 
+# DATABASE - PASCAL CONTEXT - CEDN
+
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/test-fold0.txt" "test-fold0.txt"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/test-fold1.txt" "test-fold1.txt"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/test-fold2.txt" "test-fold2.txt"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/test-fold3.txt" "test-fold3.txt"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/test-fold4.txt" "test-fold4.txt"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/test-fold5.txt" "test-fold5.txt"
+
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train-fold0.txt" "train-fold0.txt"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train-fold1.txt" "train-fold1.txt"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train-fold2.txt" "train-fold2.txt"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train-fold3.txt" "train-fold3.txt"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train-fold4.txt" "train-fold4.txt"
+ln -fs "../../../CONFIG-ENVIRONMENT/EXTRA-CODE/DATABASEs/pascal_context/train-fold5.txt" "train-fold5.txt"
+
 popd
+
+# DATABASE - BSDS500 - HED
 
 pushd $PWD
 cd $DATABASE_FOLDER_CONF"/"$BSDS500_NAME_CONF"/"
@@ -116,6 +146,8 @@ cp -f *.mexw64 ../
 popd
 
 # CODEs
+
+# CODE - HED
 
 mkdir -p $CODES_FOLDER_CONF"/"$HED_CODE_FOLDER_CONF"/data/"
 pushd $PWD
@@ -168,4 +200,24 @@ ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/
 ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/HED_CODE/examples/base/java/mail.sender-0.0.1-jar-with-dependencies.jar" "mail.sender-0.0.1-jar-with-dependencies.jar"
 cd "../../"
 
+popd
+
+# CODE - CEDN
+
+
+
+#####################################################################################
+# Done
+#####################################################################################
+
+echo "Configuration done."
+
+pushd $PWD
+cd $CODES_FOLDER_CONF"/"$HED_CODE_FOLDER_CONF"/"
+echo "Complie HED code: "$PWD
+popd
+
+pushd $PWD
+cd $CODES_FOLDER_CONF"/"$CEDN_CODE_FOLDER_CONF"/"
+echo "Complie CEDN code: "$PWD
 popd
