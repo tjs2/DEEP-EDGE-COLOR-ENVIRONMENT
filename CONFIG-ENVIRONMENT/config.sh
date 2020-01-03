@@ -204,7 +204,45 @@ popd
 
 # CODE - CEDN
 
+mkdir -p $CODES_FOLDER_CONF"/"$CEDN_CODE_FOLDER_CONF"/data/"
+pushd $PWD
+cd $CODES_FOLDER_CONF"/"$CEDN_CODE_FOLDER_CONF"/data/"
+ln -fs "../../../"$DATABASE_FOLDER_NAME_CONF"/"$PASCAL_CONTEXT_NAME_CONF"/" $PASCAL_CONTEXT_NAME_CONF
+popd
 
+pushd $PWD
+mkdir -p $CODES_FOLDER_CONF"/"$CEDN_CODE_FOLDER_CONF"/code-cedn/"
+cd $CODES_FOLDER_CONF"/"$CEDN_CODE_FOLDER_CONF"/code-cedn/"
+
+mkdir -p "./base/conf"
+cd "./base/conf"
+#ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/conf/deploy.prototxt" "deploy.prototxt"
+cd "../../"
+
+mkdir -p "./base/matlab"
+cd "./base/matlab"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/matlab/train.m" "train.m"
+cd "../../"
+
+mkdir -p "./base/py"
+cd "./base/py"
+#ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/py/colorspace.py" "colorspace.py"
+cd "../../"
+
+mkdir -p "./base/sh"
+cd "./base/sh"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/sh/run.sh" "run.sh"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/sh/cedn.sh" "cedn.sh"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/sh/train.sh" "train.sh"
+cd "../../"
+
+mkdir -p "./base/java"
+cd "./base/java"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/java/mail.properties" "mail.properties"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/java/mail.sender-0.0.1-jar-with-dependencies.jar" "mail.sender-0.0.1-jar-with-dependencies.jar"
+cd "../../"
+
+popd
 
 #####################################################################################
 # Done
