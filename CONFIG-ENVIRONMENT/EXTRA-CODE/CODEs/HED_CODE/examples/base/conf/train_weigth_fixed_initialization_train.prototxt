@@ -9,6 +9,7 @@ layer {
   }
   transform_param {
     mirror: false
+    [TRANSFORM_MEAN_VALUE]
     color_transformation: [COLOR_REPLACE]
   }
   image_data_param {
@@ -30,6 +31,7 @@ layer {
   }
   transform_param {
     mirror: false
+    [TRANSFORM_MEAN_VALUE]
     color_transformation: [COLOR_REPLACE]
   }
   image_data_param {
