@@ -64,8 +64,8 @@ else
     export TRANSFER_WEIGHT=true
 fi
 
-DATASET_TRAIN_FOLDER=$DATASET_FOLDER_PARAM"img/"
-DATASET_GT_FOLDER=$DATASET_FOLDER_PARAM"rg/"
+DATASET_TRAIN_FOLDER=$DATASET_FOLDER_PARAM"/img/"
+DATASET_GT_FOLDER=$DATASET_FOLDER_PARAM"/rg/"
 
 ##################################################################
 # Pre execution
