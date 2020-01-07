@@ -216,7 +216,11 @@ cd $CODES_FOLDER_CONF"/"$CEDN_CODE_FOLDER_CONF"/code-cedn/"
 
 mkdir -p "./base/conf"
 cd "./base/conf"
-#ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/conf/deploy.prototxt" "deploy.prototxt"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/conf/vgg-16-encoder-decoder-contour_solver.prototxt" "vgg-16-encoder-decoder-contour_solver.prototxt"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/conf/vgg-16-encoder-decoder-contour-pascal-train-TEST.prototxt" "vgg-16-encoder-decoder-contour-pascal-train-TEST.prototxt"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/conf/vgg-16-encoder-decoder-contour-pascal-train-WEIGTH_FIXED_INITIALIZATION_NO_TRAIN.prototxt" "vgg-16-encoder-decoder-contour-pascal-train-WEIGTH_FIXED_INITIALIZATION_NO_TRAIN.prototxt"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/conf/vgg-16-encoder-decoder-contour-pascal-train-WEIGTH_FIXED_INITIALIZATION_TRAIN.prototxt.prototxt" "vgg-16-encoder-decoder-contour-pascal-train-WEIGTH_FIXED_INITIALIZATION_TRAIN.prototxt.prototxt"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/conf/vgg-16-encoder-decoder-contour-pascal-train-WEIGTH_RANDOM_INITIALIZATION_TRAIN.prototxt" "vgg-16-encoder-decoder-contour-pascal-train-WEIGTH_RANDOM_INITIALIZATION_TRAIN.prototxt"
 cd "../../"
 
 mkdir -p "./base/matlab"
