@@ -50,6 +50,16 @@ CEDN_CODE_GIT_BRANCH_CONF="cedn-color"
 HED_CODE_FOLDER_CONF="HED_CODE"
 CEDN_CODE_FOLDER_CONF="CEDN_CODE"
 
+# MODELs
+
+MODELS_FOLDER_CONF="../"$ENVIRONMENT_FOLDER_CONF"/MODELs"
+
+HED_MODEL_URL_CONF="https://www.dropbox.com/s/bm30ijdh5skwhqv/5stage-vgg.caffemodel?dl=0"
+CEDN_MODEL_URL_CONF="https://www.dropbox.com/s/ol5itrbloahff6r/VGG_ILSVRC_16_layers_fcn_model.mat?dl=0"
+
+HED_MODEL_NAME_CONF="5stage-vgg.caffemodel"
+CEDN_MODEL_NAME_CONF="VGG_ILSVRC_16_layers_fcn_model.mat"
+
 #####################################################################################
 # RUN
 #####################################################################################
@@ -83,6 +93,19 @@ git -C $CODES_FOLDER_CONF"/"$HED_CODE_FOLDER_CONF checkout -B $HED_CODE_GIT_BRAN
 
 git clone $CEDN_CODE_GIT_URL_CONF $CODES_FOLDER_CONF"/"$CEDN_CODE_FOLDER_CONF
 # git -C $CODES_FOLDER_CONF"/"$CEDN_CODE_FOLDER_CONF checkout -B $CEDN_CODE_GIT_BRANCH_CONF "origin/"$CEDN_CODE_GIT_BRANCH_CONF
+
+# MODELs
+
+mkdir -p $MODELS_FOLDER_CONF
+
+wget -O $MODELS_FOLDER_CONF"/"$HED_MODEL_NAME_CONF $HED_MODEL_URL_CONF
+wget -O $MODELS_FOLDER_CONF"/"$CEDN_MODEL_NAME_CONF $CEDN_MODEL_URL_CONF
+
+mkdir -p $CODES_FOLDER_CONF"/"$HED_CODE_FOLDER_CONF"/data/"
+cp -f $MODELS_FOLDER_CONF"/"$HED_MODEL_NAME_CONF $CODES_FOLDER_CONF"/"$HED_CODE_FOLDER_CONF"/data/"
+
+mkdir -p $CODES_FOLDER_CONF"/"$CEDN_CODE_FOLDER_CONF"/data/"
+cp -f $MODELS_FOLDER_CONF"/"$CEDN_MODEL_NAME_CONF $CODES_FOLDER_CONF"/"$CEDN_CODE_FOLDER_CONF"/data/"
 
 #####################################################################################
 # EXTEND
@@ -226,6 +249,9 @@ cd "../../"
 mkdir -p "./base/matlab"
 cd "./base/matlab"
 ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/matlab/train.m" "train.m"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/matlab/matcaffe_fcn_vgg_init.m" "matcaffe_fcn_vgg_init.m"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/matlab/color_convert.m" "color_convert.m"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/matlab/colorspace.m" "colorspace.m"
 cd "../../"
 
 mkdir -p "./base/py"
@@ -238,6 +264,7 @@ cd "./base/sh"
 ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/sh/run.sh" "run.sh"
 ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/sh/cedn.sh" "cedn.sh"
 ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/sh/train.sh" "train.sh"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/sh/send-mail.sh" "send-mail.sh"
 cd "../../"
 
 mkdir -p "./base/java"
