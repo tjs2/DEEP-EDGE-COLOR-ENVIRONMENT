@@ -12,6 +12,11 @@ class ColorTransFormation(Enum):
   dRdGdB = 5
   RGBdRdGdB = 6
   HSV = 7
+  YUV = 8
+  YIQ = 9
+  YPbPr = 10
+  YDbDr = 11
+  YCbCr = 12
 
 def convert_color_from_rgb(rgb, color):
   converted = rgb
@@ -33,13 +38,93 @@ def convert_color_from_bgr(bgr, color):
                4 : convert_BGR_I1I2I3,
                5 : convert_BGR_dRdGdB,
                6 : convert_BGR_RGBdRdGdB,
-               7 : convert_BGR_HSV}
+               7 : convert_BGR_HSV,
+               8 : convert_BGR_YUV,
+               9 : convert_BGR_YIQ,
+               10 : convert_BGR_YPbPr,
+               11 : convert_BGR_YDbDr,
+               12 : convert_BGR_YCbCr}
 
     converted = options[color.value](bgr)
   elif (color != ColorTransFormation.BGR):
     raise Exception('Unexpected color model: ' + color.name)
 
   return converted
+
+def convert_BGR_YUV(bgr):
+  
+  transfomMatrix = [[ 0.299,  0.587,  0.114],
+                    [-0.147, -0.289,  0.436],
+                    [ 0.615, -0.515, -0.100]]
+  alpha = [1.0, 1.0, 1.0]
+  delta = [0.0, 0.0, 0.0]
+
+  ret = bgrTransformation(bgr, transfomMatrix, alpha, delta)
+
+  return ret
+
+def convert_BGR_YIQ(bgr):
+  
+  transfomMatrix = [[0.299,     0.587,     0.114   ],
+                    [0.595716, -0.274453, -0.321263],
+                    [0.211456, -0.522591,  0.311135]]
+  alpha = [1.0, 1.0, 1.0]
+  delta = [0.0, 0.0, 0.0]
+
+  ret = bgrTransformation(bgr, transfomMatrix, alpha, delta)
+
+  return ret
+
+def convert_BGR_YPbPr(bgr):
+  
+  transfomMatrix = [[ 0.299,      0.587,     0.114   ],
+                    [-0.1687367, -0.331264,  0.5     ],
+                    [ 0.5,       -0.418688, -0.081312]]
+  alpha = [1.0, 1.0, 1.0]
+  delta = [0.0, 0.0, 0.0]
+
+  ret = bgrTransformation(bgr, transfomMatrix, alpha, delta)
+
+  return ret
+
+def convert_BGR_YDbDr(bgr):
+  
+  transfomMatrix = [[ 0.299,  0.587, 0.114],
+                    [-0.450, -0.883, 1.333],
+                    [-1.333,  1.116, 0.217]]
+  alpha = [1.0, 1.0, 1.0]
+  delta = [0.0, 0.0, 0.0]
+
+  ret = bgrTransformation(bgr, transfomMatrix, alpha, delta)
+
+  return ret
+
+def convert_BGR_YCbCr(bgr):
+  
+  transfomMatrix = [[ 65.481, 128.553,  24.966],
+                    [-37.797, -74.203, 112.0  ],
+                    [112.0,   -93.786, -18.214]]
+  alpha = [ 1.0,   1.0,   1.0]
+  delta = [16.0, 128.0, 128.0]
+
+  ret = bgrTransformation(bgr, transfomMatrix, alpha, delta)
+
+  return ret
+
+def bgrTransformation(bgr, transfomMatrix, alpha, delta):
+  bgr32F = np.float32(bgr)
+  bgrSplitted = cv2.split(bgr32F)
+
+  R = 2
+  G = 1
+  B = 0
+
+  channel1 = alpha[0] * ( bgrSplitted[R] * transfomMatrix[0][0] + bgrSplitted[G] * transfomMatrix[0][1] + bgrSplitted[B] * transfomMatrix[0][2] ) + delta[0]
+  channel2 = alpha[1] * (-bgrSplitted[R] * transfomMatrix[1][0] - bgrSplitted[G] * transfomMatrix[1][1] + bgrSplitted[B] * transfomMatrix[1][2] ) + delta[1]
+  channel3 = alpha[2] * ( bgrSplitted[R] * transfomMatrix[2][0] - bgrSplitted[G] * transfomMatrix[2][1] - bgrSplitted[B] * transfomMatrix[2][2] ) + delta[2]
+
+  transfomed = cv2.merge((channel1, channel2, channel3))
+  return transfomed
 
 def convert_BGR_LAB(bgr):
   bgr32F = np.float32(bgr) / 255.0
