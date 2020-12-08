@@ -94,7 +94,7 @@ ECHO_CONTENT_END="\n"[$DATE]" End train process. Elapsed: $(( END_TIME - BEGIN_T
 echo -e $ECHO_CONTENT_END
 echo '--------------------------------------------------------'
 
-bash ./send-mail.sh $MAIL_SUBJECT " . Machine: <br>$HOSTNAME<br> . Begin: ${ECHO_CONTENT_BEGIN//"\n"/\<br\>} . End: ${ECHO_CONTENT_END//"\n"/\<br\>} . CMD: <br>${CMD//"\n"/\<br\>}<br>"
+bash ./send-mail.sh $MAIL_SUBJECT " . Machine: <br>$HOSTNAME<br> . Begin: ${ECHO_CONTENT_BEGIN//"\n"/\<br\>} . End: ${ECHO_CONTENT_END//"\n"/\<br\>} . CMD: <br>${CMD//"\n"/\<br\>}<br>" || true
 
 ##################################################################
 # Execution: Test
@@ -115,7 +115,7 @@ ECHO_CONTENT_END="\n"[$DATE]" End boundary map generation. Elapsed: $(( END_TIME
 echo -e $ECHO_CONTENT_END
 echo '--------------------------------------------------------'
 
-bash ./send-mail.sh $MAIL_SUBJECT " . Machine: <br>$HOSTNAME<br> . Begin: ${ECHO_CONTENT_BEGIN//"\n"/\<br\>} . End: ${ECHO_CONTENT_END//"\n"/\<br\>} . CMD: <br>${CMD//"\n"/\<br\>}<br>"
+bash ./send-mail.sh $MAIL_SUBJECT " . Machine: <br>$HOSTNAME<br> . Begin: ${ECHO_CONTENT_BEGIN//"\n"/\<br\>} . End: ${ECHO_CONTENT_END//"\n"/\<br\>} . CMD: <br>${CMD//"\n"/\<br\>}<br>" || true
 
 ##################################################################
 # Execution: Process boundary
@@ -136,7 +136,7 @@ ECHO_CONTENT_END="\n"[$DATE]" End process brute boudary detection maps. Elapsed:
 echo -e $ECHO_CONTENT_END
 echo '--------------------------------------------------------'
 
-bash ./send-mail.sh $MAIL_SUBJECT " . Machine: <br>$HOSTNAME<br> . Begin: ${ECHO_CONTENT_BEGIN//"\n"/\<br\>} . End: ${ECHO_CONTENT_END//"\n"/\<br\>} . CMD: <br>${CMD//"\n"/\<br\>}<br>"
+bash ./send-mail.sh $MAIL_SUBJECT " . Machine: <br>$HOSTNAME<br> . Begin: ${ECHO_CONTENT_BEGIN//"\n"/\<br\>} . End: ${ECHO_CONTENT_END//"\n"/\<br\>} . CMD: <br>${CMD//"\n"/\<br\>}<br>" || true
 
 ##################################################################
 # Execution: Process brute boudary detection maps
@@ -157,7 +157,7 @@ ECHO_CONTENT_END="\n"[$DATE]" End boudary detection maps evaluation. Elapsed: $(
 echo -e $ECHO_CONTENT_END
 echo '--------------------------------------------------------'
 
-bash ./send-mail.sh $MAIL_SUBJECT " . Machine: <br>$HOSTNAME<br> . Begin: ${ECHO_CONTENT_BEGIN//"\n"/\<br\>} . End: ${ECHO_CONTENT_END//"\n"/\<br\>} . CMD: <br>${CMD//"\n"/\<br\>}<br>"
+bash ./send-mail.sh $MAIL_SUBJECT " . Machine: <br>$HOSTNAME<br> . Begin: ${ECHO_CONTENT_BEGIN//"\n"/\<br\>} . End: ${ECHO_CONTENT_END//"\n"/\<br\>} . CMD: <br>${CMD//"\n"/\<br\>}<br>" || true
 
 # --------------------------------------------------------
 
@@ -165,4 +165,4 @@ TOTAL_END_TIME=$SECONDS
 ECHO_CONTENT="\nTotal elapsed: $(( TOTAL_END_TIME - TOTAL_BEGIN_TIME )) seconds.\n"
 echo -e $ECHO_CONTENT
 
-bash ./send-mail.sh $MAIL_SUBJECT " . Machine: <br>$HOSTNAME<br> . Total: ${ECHO_CONTENT//"\n"/\<br\>}"
+bash ./send-mail.sh $MAIL_SUBJECT " . Machine: <br>$HOSTNAME<br> . Total: ${ECHO_CONTENT//"\n"/\<br\>}" || true
