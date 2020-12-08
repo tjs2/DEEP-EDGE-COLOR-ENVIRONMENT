@@ -256,7 +256,7 @@ cd "../../"
 
 mkdir -p "./base/py"
 cd "./base/py"
-#ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/py/colorspace.py" "colorspace.py"
+ln -fs "../../../../../../CONFIG-ENVIRONMENT/EXTRA-CODE/CODEs/CEDN_CODE/code-cedn/base/py/colorspace.py" "colorspace.py"
 cd "../../"
 
 mkdir -p "./base/sh"
